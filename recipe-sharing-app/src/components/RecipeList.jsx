@@ -1,13 +1,13 @@
 import React from 'react';
-import { useRecipeStore } from '../recipeStore';
+import useRecipeStore from '../recipeStore'; // remove curly braces for default import
 import FavoriteButton from './FavoriteButton';
 
 const RecipeList = () => {
-  const filteredRecipes = useRecipeStore((state) => state.filteredRecipes);
+  const recipes = useRecipeStore((state) => state.recipes); // Use 'recipes' directly
 
   return (
     <div>
-      {filteredRecipes.map((recipe) => (
+      {recipes.map((recipe) => (
         <div key={recipe.id}>
           <h3>{recipe.title}</h3>
           <p>{recipe.description}</p>
@@ -19,3 +19,4 @@ const RecipeList = () => {
 };
 
 export default RecipeList;
+

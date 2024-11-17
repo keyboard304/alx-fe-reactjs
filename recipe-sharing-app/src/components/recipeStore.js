@@ -4,6 +4,7 @@ const useRecipeStore = create((set) => ({
   recipes: [],
   favorites: [],
   recommendations: [],
+  searchTerm: "", // Add searchTerm state
 
   addRecipe: (newRecipe) =>
     set((state) => ({
@@ -25,6 +26,11 @@ const useRecipeStore = create((set) => ({
   deleteRecipe: (recipeId) =>
     set((state) => ({
       recipes: state.recipes.filter((recipe) => recipe.id !== recipeId),
+    })),
+
+  setSearchTerm: (term) => 
+    set(() => ({
+      searchTerm: term, // Update the searchTerm
     })),
 
   addFavorite: (recipeId) =>

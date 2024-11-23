@@ -36,13 +36,20 @@ const RegistrationForm = () => {
           type="text"
           id="username"
           name="username"
+          value={username} // Add value here
           onChange={handleChange}
         />
       </div>
 
       <div>
         <label htmlFor="email">Email:</label>
-        <input type="email" id="email" name="email" onChange={handleChange} />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={email} // Add value here
+          onChange={handleChange}
+        />
       </div>
 
       <div>
@@ -51,6 +58,7 @@ const RegistrationForm = () => {
           type="password"
           id="password"
           name="password"
+          value={password} // Add value here
           onChange={handleChange}
         />
       </div>

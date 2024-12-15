@@ -1,28 +1,17 @@
-import axios from "axios";
+import axios from 'axios';
 
-const BASE_URL = "https://api.github.com/search/users?q";
+// Define the base GitHub API URL for user searches
+const GITHUB_API_URL = 'https://api.github.com/users/';
 
-export const fetchAdvancedUserData = async (username, location, minRepos) => {
-  // Build the query string for the API call
-  let query = "";
-
-  if (username) {
-    query += `${username} in:login`;
-  }
-
-  if (location) {
-    query += ` location:${location}`;
-  }
-
-  if (minRepos) {
-    query += ` repos:>=${minRepos}`;
-  }
-
+// Async function to fetch GitHub user data by username
+const fetchUser = async (username) => {
   try {
-    // Make the API call using Axios
-    const response = await axios.get(`${BASE_URL}?q=${query}`);
-    return response.data; // Return the response data
+    const response = await axios.get(`${GITHUB_API_URL}${username}`);
+    return response.data; // Return user data on success
   } catch (error) {
-    throw new Error("Error fetching users");
+    console.error('Error fetching user:', error);
+    throw error; // Rethrow the error for handling in components
   }
 };
+
+export default fetchUser; // Export the function for use in other parts of the app
